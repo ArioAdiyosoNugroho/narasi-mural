@@ -44,10 +44,10 @@ export default function StickyNavbar({
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 pointer-events-none px-4 pt-4 sm:px-8 sm:pt-5">
-      <div className="mx-auto max-w-7xl flex items-center justify-between gap-4">
+      <div className="mx-auto max-w-7xl flex md:grid md:grid-cols-3 items-center justify-between gap-4">
         
-        {/* LOGO (LEFT) */}
-        <div className="pointer-events-auto flex items-center">
+        {/* LOGO (LEFT col) */}
+        <div className="pointer-events-auto flex items-center justify-start">
           <a
             href="#home"
             onClick={(e) => handleScrollTo(e, '#home')}
@@ -64,70 +64,45 @@ export default function StickyNavbar({
           </a>
         </div>
 
-        {/* CENTER NAV PILL (DESKTOP) */}
-        <nav
-          className={`pointer-events-auto hidden md:flex items-center space-x-1 rounded-full px-3 py-1.5 transition-all duration-300 ${
-            isScrolled
-              ? 'bg-white/90 dark:bg-neutral-900/90 shadow-md backdrop-blur-md border border-neutral-200/60 dark:border-neutral-800'
-              : 'bg-white shadow-xl border border-white/80'
-          }`}
-        >
-          {navLinks.map((link, idx) => (
-            <a
-              key={link.href || idx}
-              href={link.href}
-              onClick={(e) => handleScrollTo(e, link.href)}
-              className={`px-4 py-1.5 text-xs font-bold tracking-wide transition-all rounded-full ${
-                isScrolled
-                  ? 'text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                  : 'text-neutral-900 hover:text-black hover:bg-neutral-100'
-              }`}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        {/* CENTER NAV PILL (MIDDLE col - desktop) */}
+        <div className="hidden md:flex justify-center">
+          <nav
+            className={`pointer-events-auto flex items-center space-x-1 rounded-full px-3 py-1.5 transition-all duration-300 ${
+              isScrolled
+                ? 'bg-white/90 dark:bg-neutral-900/90 shadow-md backdrop-blur-md border border-neutral-200/60 dark:border-neutral-800'
+                : 'bg-white shadow-xl border border-white/80'
+            }`}
+          >
+            {navLinks.map((link, idx) => (
+              <a
+                key={link.href || idx}
+                href={link.href}
+                onClick={(e) => handleScrollTo(e, link.href)}
+                className={`px-4 py-1.5 text-xs font-bold tracking-wide transition-all rounded-full ${
+                  isScrolled
+                    ? 'text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                    : 'text-neutral-900 hover:text-black hover:bg-neutral-100'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </div>
 
-        {/* RIGHT ACTION PILL (SEARCH & CART) */}
-        <div className="pointer-events-auto flex items-center gap-2">
+        {/* RIGHT SPACER / MOBILE TOGGLE (RIGHT col) */}
+        <div className="pointer-events-auto flex items-center justify-end">
+          {/* Mobile Toggle Button (Visible only on mobile) */}
           <div
-            className={`flex items-center space-x-1 rounded-full px-2 py-1 transition-all duration-300 ${
+            className={`md:hidden flex items-center space-x-1 rounded-full px-2 py-1 transition-all duration-300 ${
               isScrolled
                 ? 'bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 shadow-md'
                 : 'bg-neutral-900 text-white shadow-xl'
             }`}
           >
-            {/* Search Button */}
-            <button
-              onClick={onOpenSearch}
-              className="p-2 transition-transform hover:scale-110 focus:outline-none rounded-full hover:bg-white/10 dark:hover:bg-black/10"
-              title="Search"
-              type="button"
-              aria-label="Search"
-            >
-              <Search className="h-4 w-4" />
-            </button>
-
-            {/* Cart / Collection Button */}
-            <button
-              onClick={onOpenCart}
-              className="relative p-2 transition-transform hover:scale-110 focus:outline-none rounded-full hover:bg-white/10 dark:hover:bg-black/10"
-              title="Collection"
-              type="button"
-              aria-label="Collection"
-            >
-              <ShoppingBag className="h-4 w-4" />
-              {cartItemCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white shadow-sm">
-                  {cartItemCount}
-                </span>
-              )}
-            </button>
-
-            {/* Mobile Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen((prev) => !prev)}
-              className="p-2 transition-transform md:hidden focus:outline-none rounded-full hover:bg-white/10 dark:hover:bg-black/10"
+              className="p-2 transition-transform focus:outline-none rounded-full hover:bg-white/10 dark:hover:bg-black/10"
               type="button"
               aria-label="Toggle Navigation"
               aria-expanded={mobileMenuOpen}
