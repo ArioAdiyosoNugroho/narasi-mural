@@ -1,111 +1,136 @@
-export const NAV_LINKS = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About Us' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#custom', label: 'Commission' },
-  { href: '#blog', label: 'Exhibitions' },
-];
+// 0
+import muralWorkInProgress from '../assets/img/gallery/IMG_20260812_195727_979.jpg';
+//1
+import futureDreamsBoard from '../assets/img/gallery/IMG_2060.PNG';
 
-export const GALLERY_CATEGORIES = [
-  'All',
-  'Abstract',
-  'Contemporary',
-  'Landscape',
-  'Portrait',
-  'Digital',
-];
+const GALLERY_IMAGES = [muralWorkInProgress, futureDreamsBoard];
 
-export const COMMISSION_SWATCHES = [
-  '#E8DDD0',
-  '#D97706',
-  '#059669',
-  '#2563EB',
-  '#111827',
-];
+const galleryImage = (index) => GALLERY_IMAGES[index % GALLERY_IMAGES.length];
 
-export const ARTWORKS = [
+export const GALLERY_ACTIVITIES = [
   {
     id: 1,
-    name: 'Ethereal Dreams',
-    price: 2500,
-    category: 'Abstract',
-    artworkUrl:
-      'https://images.unsplash.com/photo-1549490349-8643362247b5?auto=format&fit=crop&q=80&w=600',
+    category: 'Preparation',
+    title: 'Preparing the Wall',
+    description:
+      'Tahap awal dimulai dengan mempersiapkan permukaan dinding agar siap digunakan sebagai media mural.',
+    imageKey: 'galleryPreparation',
+    image: galleryImage(0),
   },
   {
     id: 2,
-    name: 'Urban Symphony',
-    price: 3200,
-    category: 'Contemporary',
-    artworkUrl:
-      'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=600',
+    category: 'Sketching',
+    title: 'Developing the Concept',
+    description:
+      'Membuat sketsa awal untuk menentukan komposisi, bentuk, dan posisi setiap elemen visual pada mural.',
+    imageKey: 'gallerySketching',
+    image: galleryImage(1),
   },
   {
     id: 3,
-    name: 'Whispers of Nature',
-    price: 1800,
-    category: 'Landscape',
-    artworkUrl:
-      'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?auto=format&fit=crop&q=80&w=600',
+    category: 'Painting',
+    title: 'Bringing the Idea to Life',
+    description:
+      'Proses pewarnaan dan pengecatan mulai dilakukan untuk mengubah konsep menjadi karya visual nyata.',
+    imageKey: 'galleryPainting',
+    image: galleryImage(0),
   },
   {
     id: 4,
-    name: 'Digital Horizons',
-    price: 4200,
-    category: 'Digital',
-    artworkUrl:
-      'https://images.unsplash.com/photo-1561214115-f2f134cc4912?auto=format&fit=crop&q=80&w=600',
+    category: 'Details',
+    title: 'Adding the Details',
+    description:
+      'Setiap detail diperhatikan untuk memperkuat karakter, pesan, dan visual keseluruhan dari mural.',
+    imageKey: 'galleryDetails',
+    image: galleryImage(1),
   },
   {
     id: 5,
-    name: 'Portrait of Silence',
-    price: 5600,
-    category: 'Portrait',
-    artworkUrl:
-      'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=600',
+    category: 'Process',
+    title: 'Working Together',
+    description:
+      'Proses pengerjaan mural dilakukan melalui kolaborasi, pembagian tugas, dan komunikasi antaranggota.',
+    imageKey: 'galleryProcess',
+    image: galleryImage(0),
   },
   {
     id: 6,
-    name: 'Cosmic Dance',
-    price: 3800,
-    category: 'Abstract',
-    artworkUrl:
-      'https://images.unsplash.com/photo-1541961017774-22349e4a1262?auto=format&fit=crop&q=80&w=600',
+    category: 'Final',
+    title: 'The Finished Mural',
+    description:
+      'Hasil akhir mural menjadi representasi dari ide, kreativitas, kerja sama, dan keberanian untuk berkarya.',
+    imageKey: 'galleryFinal',
+    image: galleryImage(1),
   },
 ];
+
+export const ARTWORKS = GALLERY_ACTIVITIES.map((activity, index) => ({
+  id: activity.id,
+  name: activity.title,
+  category: activity.category,
+  price: [120, 140, 155, 165, 150, 180][index] ?? 120,
+  artworkUrl: activity.image,
+  description: activity.description,
+}));
 
 export const EXHIBITIONS = [
   {
     id: 1,
-    title: 'Summer Salon 2026: Emerging Voices in Contemporary Art - Exhibition Guide',
-    date: '18.01.2026',
-    readTime: '5 min read',
-    category: 'Exhibition',
+    category: 'Studio Notes',
+    title: 'Preparing the Wall for Color',
+    date: 'August 2026',
+    readTime: '4 min read',
+    image: galleryImage(0),
     excerpt:
-      'Our annual showcase returns with 25 groundbreaking artists redefining the boundaries of modern expression at Lumiere Gallery London.',
-    image:
-      'https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&q=80&w=600',
+      'A closer look at how the mural surface is cleaned, primed, and mapped before the first brushstroke.',
   },
   {
     id: 2,
-    title: "The Art of Collecting: A Beginner's Guide to Building Your Gallery",
-    date: '18.01.2026',
-    readTime: '7 min read',
-    category: 'Guide',
+    category: 'Exhibition',
+    title: 'Sketches Into Structure',
+    date: 'July 2026',
+    readTime: '5 min read',
+    image: galleryImage(1),
     excerpt:
-      'Expert insights on starting your art collection, from understanding mediums to spotting emerging talents in the contemporary market.',
-    image:
-      'https://images.unsplash.com/photo-1561839561-b13cfe4e17f7?auto=format&fit=crop&q=80&w=600',
+      'From pencil studies to a complete composition, this update follows how the team locked the final layout.',
   },
   {
     id: 3,
-    title: 'Behind the Canvas: Studio Visit with Contemporary Masters',
-    date: '10.01.2026',
+    category: 'Process',
+    title: 'Color, Teamwork, and Rhythm',
+    date: 'June 2026',
     readTime: '4 min read',
-    category: 'Artist Spotlight',
+    image: galleryImage(0),
     excerpt:
-      'Step inside the creative sanctuary of abstract expressionists as they prepare for their upcoming solo exhibitions in London.',
-    image:
-      'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=600',
+      'An inside look at how the class split tasks, mixed paint, and kept the mural consistent from start to finish.',
   },
+  {
+    id: 4,
+    category: 'Spotlight',
+    title: 'The Finished Wall',
+    date: 'May 2026',
+    readTime: '3 min read',
+    image: galleryImage(1),
+    excerpt:
+      'A reflection on the completed mural and the details that bring the full composition together.',
+  },
+];
+
+export const COMMISSION_SWATCHES = [
+  '#1E1C1B',
+  '#2F4858',
+  '#6C8C5E',
+  '#C97B63',
+  '#D9B08C',
+  '#E8DDD0',
+];
+
+export const GALLERY_ACTIVITY_CATEGORIES = [
+  'All',
+  'Preparation',
+  'Sketching',
+  'Painting',
+  'Details',
+  'Process',
+  'Final',
 ];
