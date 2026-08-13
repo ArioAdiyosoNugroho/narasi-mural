@@ -103,7 +103,7 @@ export default function App() {
       <main className="w-full px-4 py-16 space-y-20 sm:px-6 md:px-8 lg:px-12 md:space-y-28">
         <AboutSection />
         <GallerySection onAddToCollection={addToCart} />
-        <CommissionSection onOpenCommission={() => setIsCommissionOpen(true)} />
+        {/* <CommissionSection onOpenCommission={() => setIsCommissionOpen(true)} /> */}
         {/* <BlogSection
           onOpenPost={setActiveBlogModal}
           onOpenArchive={() => showToast('Opening complete exhibition archive...')}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SITE_MEDIA } from '../../data/siteMedia.js';
+import mural from '../../assets/img/mural.jpeg'
 import {
   ArrowDownRight,
   Expand,

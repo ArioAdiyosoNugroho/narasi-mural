@@ -1,14 +1,13 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-
+import heroImage from '../../assets/img/hero.jpeg';
 export default function HeroSection() {
   return (
     <section
       id="home"
       className="relative flex min-h-[100dvh] items-center overflow-hidden bg-cover bg-center bg-no-repeat text-white"
       style={{
-        backgroundImage:
-          "linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url('https://images.unsplash.com/photo-1531913764164-f85c52e6e654?auto=format&fit=crop&q=85&w=2000')",
+        backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)), url(${heroImage})`,
       }}
     >
       {/* HERO CONTENT */}

@@ -5,7 +5,7 @@ const DEFAULT_NAV_LINKS = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Commission', href: '#custom' },
+  // { label: 'Commission', href: '#custom' },
   { label: 'Note', href: '#note' },
 ];
 
