@@ -17,9 +17,9 @@ export default function HeroSection() {
           {/* LOCATION */}
           <div className="mb-5 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-widest text-gray-200 sm:mb-6">
             <span className="font-bold text-white">
-              London
+              XII RA
             </span>
-            <span>, Great Britain</span>
+            <span>, SMKN 2 Karanganyar</span>
           </div>
 
           {/* MAIN TYPOGRAPHY */}
