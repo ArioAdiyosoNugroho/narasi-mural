@@ -8,6 +8,7 @@ export default function NewsletterSection() {
 
   const handleNewsletter = (event) => {
     event.preventDefault();
+
     if (!newsletterEmail.trim()) {
       return;
     }
@@ -16,76 +17,289 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="grid gap-6 rounded-[32px] border border-neutral-100 bg-white p-6 shadow-sm lg:grid-cols-[0.92fr_1.08fr] lg:p-8">
-      <article className="overflow-hidden rounded-[28px] border border-neutral-100 bg-white shadow-sm">
-        <div className="relative aspect-[16/10]">
+    <section
+      className="
+        grid
+        gap-6
+        rounded-[32px]
+        border
+        border-neutral-100
+        bg-white
+        p-4
+        shadow-sm
+        sm:p-6
+        lg:grid-cols-[0.92fr_1.08fr]
+        lg:p-8
+      "
+    >
+      {/* =========================
+          IMAGE / PROJECT PREVIEW
+      ========================== */}
+      <article
+        className="
+          group
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-neutral-100
+          bg-[#F7F4EF]
+          shadow-sm
+          lg:h-full
+        "
+      >
+        <div
+          className="
+            relative
+            h-[260px]
+            overflow-hidden
+            sm:h-[360px]
+            md:h-[440px]
+            lg:h-full
+            lg:min-h-[620px]
+          "
+        >
           <img
             src={SITE_MEDIA.newsletter}
-            alt="Gallery preview"
-            className="h-full w-full object-cover"
+            alt="XII-RA Mural Project"
+            className="
+              absolute
+              inset-0
+              h-full
+              w-full
+              object-cover
+              object-center
+              transition-transform
+              duration-700
+              ease-out
+              group-hover:scale-[1.03]
+            "
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent"></div>
-          <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
-            <span className="text-[10px] uppercase tracking-[0.35em] text-white/70">
-              Private preview
+
+          {/* Overlay */}
+          <div
+            className="
+              absolute
+              inset-0
+              bg-gradient-to-t
+              from-black/65
+              via-black/10
+              to-transparent
+            "
+          />
+
+          {/* Content */}
+          <div
+            className="
+              absolute
+              bottom-0
+              left-0
+              right-0
+              p-5
+              sm:p-7
+              md:p-8
+            "
+          >
+            <span
+              className="
+                text-[9px]
+                uppercase
+                tracking-[0.35em]
+                text-white/70
+                sm:text-[10px]
+              "
+            >
+              XII-RA · Mural Project
             </span>
-            <h3 className="mt-2 text-lg font-semibold leading-tight">
-              First access to new works and invitation-only openings.
+
+            <h3
+              className="
+                mt-2
+                max-w-md
+                font-condensed
+                text-2xl
+                font-bold
+                uppercase
+                leading-[0.95]
+                text-white
+                sm:text-3xl
+                md:text-4xl
+              "
+            >
+              THINK WITH
+              <br />
+              PASSION.
             </h3>
           </div>
         </div>
       </article>
 
-      <div className="rounded-[28px] border border-neutral-100 bg-[#F7F4EF] p-8 shadow-sm">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-gray-400">
-          Collector circle
-        </p>
-        <h2 className="mt-3 font-condensed text-4xl font-bold uppercase tracking-normal text-dark-charcoal md:text-5xl">
-          NEWSLETTER
-        </h2>
-        <p className="mt-4 text-xs text-gray-500 md:text-sm">
-          Subscribe for new drops, exhibition invitations, and private viewing lists.
-        </p>
+      {/* =========================
+          ARTIST STATEMENT
+      ========================== */}
+      <article
+        className="
+          flex
+          flex-col
+          rounded-[28px]
+          border
+          border-neutral-100
+          bg-[#F7F4EF]
+          p-6
+          shadow-sm
+          sm:p-8
+          md:p-10
+          lg:p-12
+        "
+      >
+        {/* Header */}
+        <div className="flex items-start justify-between">
+          <p
+            className="
+              text-[9px]
+              font-semibold
+              uppercase
+              tracking-[0.35em]
+              text-gray-400
+              sm:text-[10px]
+            "
+          >
+            Artist Statement
+          </p>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <div className="rounded-2xl border border-neutral-100 bg-white p-4 shadow-sm">
-            <p className="text-[11px] font-semibold text-dark-charcoal">Early access</p>
-            <p className="mt-1 text-[11px] text-gray-500">See new releases first</p>
-          </div>
-          <div className="rounded-2xl border border-neutral-100 bg-white p-4 shadow-sm">
-            <p className="text-[11px] font-semibold text-dark-charcoal">Curator notes</p>
-            <p className="mt-1 text-[11px] text-gray-500">Receive collection insights</p>
-          </div>
-          <div className="rounded-2xl border border-neutral-100 bg-white p-4 shadow-sm">
-            <p className="text-[11px] font-semibold text-dark-charcoal">Private previews</p>
-            <p className="mt-1 text-[11px] text-gray-500">Access invitation-only events</p>
-          </div>
+          <span
+            className="
+              text-[10px]
+              font-medium
+              tracking-[0.15em]
+              text-gray-300
+            "
+          >
+            04
+          </span>
         </div>
 
-        {subscribed ? (
-          <div className="mt-6 flex items-center space-x-2 rounded-full bg-emerald-50 p-4 text-xs font-semibold text-emerald-800">
-            <Check className="h-4 w-4 text-emerald-600" />
-            <span>Thank you! Your VIP gallery pass code is: LUMIEREVIP2026</span>
-          </div>
-        ) : (
-          <form onSubmit={handleNewsletter} className="mt-6 flex max-w-md rounded-full bg-[#E6E0D8] p-1.5 shadow-inner">
-            <input
-              type="email"
-              required
-              placeholder="Your Email"
-              value={newsletterEmail}
-              onChange={(event) => setNewsletterEmail(event.target.value)}
-              className="flex-1 bg-transparent px-5 py-2 text-xs font-medium text-black outline-none placeholder-gray-500"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-white px-7 py-2.5 text-xs font-bold text-black shadow transition-all duration-300 hover:bg-black hover:text-white"
+        {/* Title */}
+        <h2
+          className="
+            mt-5
+            max-w-xl
+            font-condensed
+            text-4xl
+            font-bold
+            uppercase
+            leading-[0.9]
+            tracking-tight
+            text-dark-charcoal
+            sm:text-5xl
+            md:text-6xl
+          "
+        >
+          A NOTE
+          <br />
+          FROM XII-RA.
+        </h2>
+
+        {/* Content */}
+        <div
+          className="
+            mt-7
+            max-w-2xl
+            space-y-5
+            text-sm
+            leading-7
+            text-gray-600
+            sm:mt-8
+            sm:text-base
+            sm:leading-8
+          "
+        >
+          <p>
+            Mural ini menjadi ruang bagi kami untuk menuangkan cara pandang
+            sebagai pelajar yang hidup di tengah perkembangan kreativitas dan
+            teknologi.
+          </p>
+
+          <p>
+            Bagi kami, menciptakan sebuah karya bukan hanya tentang hasil akhir.
+            Setiap ide, keberanian untuk mencoba, dan proses mengerjakan sesuatu
+            bersama menjadi bagian dari pengalaman yang membentuk karya ini.
+          </p>
+
+          <p>
+            <strong className="font-semibold text-dark-charcoal">
+              Think with Passion, Code with Vision.
+            </strong>{' '}
+            adalah pesan bahwa kreativitas membutuhkan keberanian untuk
+            berpikir, sementara visi memberikan arah untuk mewujudkannya.
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div
+          className="
+            mt-auto
+            grid
+            grid-cols-2
+            gap-6
+            border-t
+            border-neutral-200
+            pt-6
+            sm:mt-12
+            sm:pt-7
+          "
+        >
+          <div>
+            <p
+              className="
+                text-[9px]
+                uppercase
+                tracking-[0.3em]
+                text-gray-400
+              "
             >
-              Send
-            </button>
-          </form>
-        )}
-      </div>
+              Created By
+            </p>
+
+            <p
+              className="
+                mt-1
+                text-sm
+                font-semibold
+                text-dark-charcoal
+                sm:text-base
+              "
+            >
+              XII-RA
+            </p>
+          </div>
+
+          <div className="text-right">
+            <p
+              className="
+                text-[9px]
+                uppercase
+                tracking-[0.3em]
+                text-gray-400
+              "
+            >
+              Project
+            </p>
+
+            <p
+              className="
+                mt-1
+                text-sm
+                font-semibold
+                text-dark-charcoal
+                sm:text-base
+              "
+            >
+              Mural · 2026
+            </p>
+          </div>
+        </div>
+      </article>
     </section>
   );
 }
