@@ -8,7 +8,7 @@ import GallerySection from './components/sections/GallerySection.jsx';
 import CommissionSection from './components/sections/CommissionSection.jsx';
 import BlogSection from './components/sections/BlogSection.jsx';
 import NewsletterSection from './components/sections/NewsletterSection.jsx';
-import FooterSection from './components/layout/FooterSection.jsx';
+import { StickyFooter } from './components/ui/StickyFooter.jsx';
 import Toast from './components/ui/Toast.jsx';
 import CartModal from './components/modals/CartModal.jsx';
 import SearchModal from './components/modals/SearchModal.jsx';
@@ -111,7 +111,7 @@ export default function App() {
         <NewsletterSection />
       </main>
 
-      <FooterSection />
+      <StickyFooter />
 
       <CartModal
         isOpen={isCartOpen}
