@@ -10,6 +10,8 @@ export function useLenis() {
       smoothTouch: false,
     });
 
+    window.lenis = lenis;
+
     let rafId = 0;
 
     const raf = (time) => {
@@ -22,6 +24,8 @@ export function useLenis() {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      window.lenis = null;
     };
   }, []);
 }
+

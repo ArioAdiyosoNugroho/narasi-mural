@@ -3,10 +3,10 @@ import { Menu, Search, ShoppingBag, X } from 'lucide-react';
 
 const DEFAULT_NAV_LINKS = [
   { label: 'Home', href: '#home' },
-  { label: 'Exhibitions', href: '#exhibitions' },
-  { label: 'Artworks', href: '#artworks' },
-  { label: 'Artists', href: '#artists' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Commission', href: '#custom' },
+  { label: 'Note', href: '#note' },
 ];
 
 export default function StickyNavbar({ 
@@ -28,6 +28,20 @@ export default function StickyNavbar({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleScrollTo = (e, href) => {
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        if (window.lenis) {
+          window.lenis.scrollTo(target);
+        } else {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 pointer-events-none px-4 pt-4 sm:px-8 sm:pt-5">
       <div className="mx-auto max-w-7xl flex items-center justify-between gap-4">
@@ -36,13 +50,17 @@ export default function StickyNavbar({
         <div className="pointer-events-auto flex items-center">
           <a
             href="#home"
-            className={`group flex items-center gap-2 font-serif font-black tracking-wider transition-all duration-300 ${
-              isScrolled 
-                ? 'text-neutral-900 dark:text-white text-lg sm:text-xl' 
-                : 'text-white text-xl sm:text-2xl drop-shadow-md'
-            }`}
+            onClick={(e) => handleScrollTo(e, '#home')}
+            className="group flex flex-col items-start transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
           >
-            <span className="uppercase tracking-[0.18em]">XII-RA</span>
+            <div className="flex items-center gap-1.5 font-condensed tracking-[0.2em] font-extrabold uppercase leading-none text-neutral-900 dark:text-white text-base sm:text-lg">
+              <span>XII</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-neutral-900 dark:bg-white" />
+              <span className="text-neutral-500 dark:text-neutral-400 font-semibold">RA</span>
+            </div>
+            <span className="text-[8px] font-black tracking-[0.25em] uppercase mt-1 text-neutral-400 dark:text-neutral-500">
+              MURAL PROJECT
+            </span>
           </a>
         </div>
 
@@ -58,6 +76,7 @@ export default function StickyNavbar({
             <a
               key={link.href || idx}
               href={link.href}
+              onClick={(e) => handleScrollTo(e, link.href)}
               className={`px-4 py-1.5 text-xs font-bold tracking-wide transition-all rounded-full ${
                 isScrolled
                   ? 'text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800'
@@ -132,7 +151,10 @@ export default function StickyNavbar({
               <a
                 key={link.href || idx}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={(e) => {
+                  setMobileMenuOpen(false);
+                  handleScrollTo(e, link.href);
+                }}
                 className="rounded-xl px-4 py-2 text-xs font-semibold text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
               >
                 {link.label}
@@ -144,3 +166,4 @@ export default function StickyNavbar({
     </header>
   );
 }
+

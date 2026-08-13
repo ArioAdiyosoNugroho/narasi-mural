@@ -18,6 +18,7 @@ export default function NewsletterSection() {
 
   return (
     <section
+      id="note"
       className="
         grid
         gap-6

@@ -104,10 +104,10 @@ export default function App() {
         <AboutSection />
         <GallerySection onAddToCollection={addToCart} />
         <CommissionSection onOpenCommission={() => setIsCommissionOpen(true)} />
-        <BlogSection
+        {/* <BlogSection
           onOpenPost={setActiveBlogModal}
           onOpenArchive={() => showToast('Opening complete exhibition archive...')}
-        />
+        /> */}
         <NewsletterSection />
       </main>
 

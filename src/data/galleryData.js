@@ -1,9 +1,18 @@
 // 0
-import muralWorkInProgress from '../assets/img/gallery/IMG_20260812_195727_979.jpg';
+import prepare from '../assets/img/gallery/1.png'
 //1
-import futureDreamsBoard from '../assets/img/gallery/IMG_2060.PNG';
+import sketsa from '../assets/img/gallery/2.png'
+//2
+import muralWorkInProgress from '../assets/img/gallery/3.jpg';
+//3
+import together from '../assets/img/gallery/4.png';
+//4
+import detail from '../assets/img/gallery/5.jpeg';
+//5
+import Finished from '../assets/img/gallery/6.jpeg';
 
-const GALLERY_IMAGES = [muralWorkInProgress, futureDreamsBoard];
+
+const GALLERY_IMAGES = [prepare,sketsa,muralWorkInProgress, detail,together,Finished];
 
 const galleryImage = (index) => GALLERY_IMAGES[index % GALLERY_IMAGES.length];
 
@@ -33,7 +42,7 @@ export const GALLERY_ACTIVITIES = [
     description:
       'Proses pewarnaan dan pengecatan mulai dilakukan untuk mengubah konsep menjadi karya visual nyata.',
     imageKey: 'galleryPainting',
-    image: galleryImage(0),
+    image: galleryImage(2),
   },
   {
     id: 4,
@@ -42,7 +51,7 @@ export const GALLERY_ACTIVITIES = [
     description:
       'Setiap detail diperhatikan untuk memperkuat karakter, pesan, dan visual keseluruhan dari mural.',
     imageKey: 'galleryDetails',
-    image: galleryImage(1),
+    image: galleryImage(3),
   },
   {
     id: 5,
@@ -51,7 +60,7 @@ export const GALLERY_ACTIVITIES = [
     description:
       'Proses pengerjaan mural dilakukan melalui kolaborasi, pembagian tugas, dan komunikasi antaranggota.',
     imageKey: 'galleryProcess',
-    image: galleryImage(0),
+    image: galleryImage(4),
   },
   {
     id: 6,
@@ -60,7 +69,7 @@ export const GALLERY_ACTIVITIES = [
     description:
       'Hasil akhir mural menjadi representasi dari ide, kreativitas, kerja sama, dan keberanian untuk berkarya.',
     imageKey: 'galleryFinal',
-    image: galleryImage(1),
+    image: galleryImage(5),
   },
 ];
 
