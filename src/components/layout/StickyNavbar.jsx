@@ -42,7 +42,7 @@ export default function StickyNavbar({
                 : 'text-white text-xl sm:text-2xl drop-shadow-md'
             }`}
           >
-            <span className="uppercase tracking-[0.18em]">LUMIÈRE</span>
+            <span className="uppercase tracking-[0.18em]">XII-RA</span>
           </a>
         </div>
 
